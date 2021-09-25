@@ -8,6 +8,13 @@ const { allMuseumsModel,
     rijksModel
 } = require('../Models/Item.model');
 
+const getAllarts=(req,res)=>{
+    allMuseumsModel.find({}).then(item=>{
+        res.status(200).json(item)
+    })
+}
+
+
 
 // we already created three requst from three APIs 
 // we used this function to create a collection of data from three APIs 
@@ -28,4 +35,4 @@ const makeColliction = () => {
 }
 
 
-module.exports = makeColliction;
+module.exports = {makeColliction,getAllarts};
