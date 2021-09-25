@@ -13,5 +13,13 @@ const itemSchema = new mongoose.Schema({
 });
 
 const artModel = mongoose.model('artworks', itemSchema);
+const harvardModel = mongoose.model('harvard', itemSchema);
+const rijksModel = mongoose.model('rijks', itemSchema);
+const allMuseumsModel = mongoose.model('allMuseums', itemSchema);
 
-module.exports = { artModel };
+module.exports = {
+    artModel,
+    harvardModel,
+    rijksModel,
+    allMuseumsModel
+};
