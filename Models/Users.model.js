@@ -15,7 +15,7 @@ const usersSchema = new mongoose.Schema({
         type:Array,
         default:[]
     },
-    upkoadedData:{
+    uploadedData:{
         type:Array,
         default:[]
     }
