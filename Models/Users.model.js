@@ -10,8 +10,15 @@ const usersSchema = new mongoose.Schema({
     isArtist: {
         type:Boolean,
         default:false
+    },
+    likedArts:{
+        type:Array,
+        default:[]
+    },
+    upkoadedData:{
+        type:Array,
+        default:[]
     }
-    
 });
 
 
