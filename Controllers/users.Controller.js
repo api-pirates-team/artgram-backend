@@ -2,6 +2,7 @@
 
 const { usersModel } = require('../Models/Users.model');
 
+
 const createUser = async(req, res) => {
     let checkEmail=await usersModel.exists({ email: req.body.email })
 
@@ -32,6 +33,14 @@ let getUser =async(req,res)=>{
     })
     console.log(existedEmail);
     }
+}
+
+let updatelikes=(req,res)=>{
+
+    let id = req.params.id;
+    let likes=req.body;
+     usersModel.findOne({ _id: id }).then(data=>{data.likedArts})
+
 }
 
 
