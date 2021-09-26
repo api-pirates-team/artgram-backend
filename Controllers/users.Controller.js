@@ -2,6 +2,7 @@
 
 const { usersModel } = require('../Models/Users.model');
 
+// Log-in/Sign-up request
 const createUser = async (req, res) => {
     let checkEmail = await usersModel.exists({ email: req.body.email })
     console.log(checkEmail);
@@ -17,6 +18,7 @@ const createUser = async (req, res) => {
         res.status(200).send("account was created ");
     }
 }
+
 let getUser = async (req, res) => {
     let emailnew = req.query.email;
     if (emailnew) {
@@ -27,6 +29,7 @@ let getUser = async (req, res) => {
     }
 }
 
+// Update likes
 let updateLikes = async (req, res) => {
     let id = req.params.id;
     let likedItem = req.body;
@@ -34,7 +37,7 @@ let updateLikes = async (req, res) => {
         data.likedArts.push(likedItem);
         data.save();
     });
-    let updatedUser = await usersModel.find({});
+    let updatedUser = await usersModel.findOne({ _id: id });
     res.status(200).json(updatedUser);
 }
 
