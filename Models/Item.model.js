@@ -9,7 +9,11 @@ const itemSchema = new mongoose.Schema({
     artistName: String,
     displaydate: String,
     dimensions: String,
-    imageUrl: String
+    imageUrl: String,
+    likesCounter: {
+        type: Number,
+        default: 0
+    }
 });
 
 const artModel = mongoose.model('artworks', itemSchema);

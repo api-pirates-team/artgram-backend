@@ -9,7 +9,11 @@ const artistsSchema = new mongoose.Schema({
     workTitle: String,
     workDate: String,
     workDimensions: String,
-    workImage: String
+    workImage: String,
+    likesCounter: {
+        type: Number,
+        default: 0
+    }
 });
 
 const artistsModel = mongoose.model('artists', artistsSchema);
