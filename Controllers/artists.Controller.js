@@ -1,15 +1,16 @@
 'use strict';
+// CRUD for the artist account
 
 const { artistsModel } = require('../Models/Artists.model');
 
-// GET request
+// GET method (to get the arts works of each artist)
 const getWorks = (req, res) => {
     artistsModel.find({}).then(data => {
         res.status(200).json(data);
     })
 }
 
-// POST request
+// POST method (to create/add art works to the homepage)
 const addWorks = (req, res) => {
     let work = req.body;
     let newWork = new artistsModel({
@@ -26,7 +27,7 @@ const addWorks = (req, res) => {
     res.status(200).json(newWork);
 }
 
-// DELETE request
+// DELETE method (to delete an art work from the artist's collection)
 const deleteWork = (req, res) => {
     let id = req.params.id;
     artistsModel.findByIdAndDelete(id, async (error) => {
@@ -38,7 +39,7 @@ const deleteWork = (req, res) => {
     });
 }
 
-// PUT request
+// PUT method (to edit the details of a specific art work)
 const updateWork = async (req, res) => {
     let id = req.params.id;
     let updatedData = req.body;

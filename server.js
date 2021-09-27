@@ -9,7 +9,7 @@ server.use(cors());
 server.use(express.json());
 const PORT = process.env.PORT;
 
-const {createUser, getUser, updateLikes}= require('./Controllers/users.Controller');
+const {createUser, getUser, updateLikes, unlike}= require('./Controllers/users.Controller');
 const {getAllarts} = require('./Controllers/items.Controlllers');
 const {getWorks, addWorks, deleteWork, updateWork} = require('./Controllers/artists.Controller');
 
@@ -18,12 +18,17 @@ mongoose.connect(`${process.env.MONGO_ATLAS}`, { useNewUrlParser: true, useUnifi
 server.get("/", (req, res) => { res.status(200).json({ message: "I'm working" }); });
 
 
-// server.get('/art', makeColliction);
-server.get("/art/allart",getAllarts);
-server.post("/create_account",createUser)
-server.get("/getuser",getUser);
-server.put('/update-likes/:id', updateLikes);
+/* To build our gallery collection using the 3 APIs:
+server.get('/art', makeColliction); */
 
+// Main requests:
+server.get("/art/allart",getAllarts); // To get the gallery API
+server.post("/create_account",createUser) // Login/signup
+server.get("/getuser",getUser); // Get user account data
+server.put('/update-likes/:id', updateLikes); // Like an image and add it to the user's feed
+server.delete('/unlike/:id', unlike) // Unlike an image and remove it from the user's feed
+
+// Artists account requests:
 server.get("/get-work", getWorks);
 server.post("/add-work", addWorks)
 server.delete("/delete-work/:id", deleteWork);

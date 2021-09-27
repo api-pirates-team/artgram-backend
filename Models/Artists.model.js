@@ -1,4 +1,5 @@
 "use strict";
+// Artist's art works collection
 const mongoose = require('mongoose');
 
 const artistsSchema = new mongoose.Schema({

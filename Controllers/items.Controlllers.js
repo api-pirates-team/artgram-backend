@@ -1,5 +1,5 @@
-
 'use strict';
+// Methods for creating the 'all-museums' API
 
 const axios = require('axios');
 const { allMuseumsModel,
@@ -13,8 +13,6 @@ const getAllarts=(req,res)=>{
         res.status(200).json(item)
     })
 }
-
-
 
 // we already created three requst from three APIs 
 // we used this function to create a collection of data from three APIs 
@@ -33,6 +31,5 @@ const makeColliction = () => {
         })
     });
 }
-
 
 module.exports = {makeColliction,getAllarts};
