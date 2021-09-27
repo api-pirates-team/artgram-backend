@@ -1,5 +1,5 @@
 'use strict';
-
+// 'all museums' collection
 
 const mongoose = require('mongoose');
 
@@ -16,6 +16,7 @@ const itemSchema = new mongoose.Schema({
     }
 });
 
+// For the collection of the elements coming from the different APIs and our collection:
 const artModel = mongoose.model('artworks', itemSchema);
 const harvardModel = mongoose.model('harvard', itemSchema);
 const rijksModel = mongoose.model('rijks', itemSchema);
