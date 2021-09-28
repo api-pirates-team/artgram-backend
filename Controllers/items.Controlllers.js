@@ -25,11 +25,23 @@ const makeColliction = () => {
                 artistName: elem.artistName,
                 displaydate: elem.displaydate,
                 dimensions: elem.dimensions,
-                imageUrl: elem.imageUrl
+                imageUrl: elem.imageUrl,
+                likesCounter: elem.likesCounter
             })
             oneItem.save()
         })
     });
 }
 
-module.exports = {makeColliction,getAllarts};
+const incrementLikes = async (req, res) => {
+    let id = req.params.id;
+    let likesCount = req.body;
+    allMuseumsModel.findOne({ _id:id }).then(data => {
+        data.likesCounter = data.likesCounter + 1;
+        data.save();
+    });
+    let updatedItem = await allMuseumsModel.findOne({ _id: id });
+    res.status(200).send(updatedItem.likesCounter);
+}
+
+module.exports = {makeColliction, getAllarts, incrementLikes};
