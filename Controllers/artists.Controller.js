@@ -65,8 +65,8 @@ let addComment = async (req, res) => {
         data.comments.push(comment);
         data.save();
     });
-    let updateComments = await artistsModel.findOne({ _id: id });
-    res.status(200).json(updateComments);
+    let updateComments = await artistsModel.findOne({ _id: itemId });
+    res.status(200).json(updateComments.comments);
 }
 
 module.exports = { getWorks, addWorks, deleteWork, updateWork, addComment };
