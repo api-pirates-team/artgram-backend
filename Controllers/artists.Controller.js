@@ -55,8 +55,19 @@ const updateWork = async (req, res) => {
         work.save();
     });
     let updatedList = await artistsModel.find({});
-    res.status(200).json(updatedList); 
+    res.status(200).json(updatedList);
 }
 
-module.exports = {getWorks, addWorks, deleteWork, updateWork};
+let addComment = async (req, res) => {
+    let itemId = req.params.id;
+    let comment = req.body;
+    artistsModel.findOne({ _id: itemId }).then(data => {
+        data.comments.push(comment);
+        data.save();
+    });
+    let updateComments = await artistsModel.findOne({ _id: id });
+    res.status(200).json(updateComments);
+}
+
+module.exports = { getWorks, addWorks, deleteWork, updateWork, addComment };
 
