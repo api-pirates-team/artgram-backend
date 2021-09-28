@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const artistsSchema = new mongoose.Schema({
     artistName: String,
-    artistpp:String,
+    artistpp: String,
     artistContactInfo: String,
     artistLocation: String,
     workTitle: String,
@@ -14,6 +14,10 @@ const artistsSchema = new mongoose.Schema({
     likesCounter: {
         type: Number,
         default: 0
+    },
+    comments: {
+        type: Array,
+        default: []
     }
 });
 

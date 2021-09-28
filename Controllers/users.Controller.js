@@ -8,6 +8,7 @@ const createUser = async (req, res) => {
     let checkEmail = await usersModel.exists({ email: req.body.email })
     if (checkEmail) {
         res.status(200).send("account is existed ");
+        // checkEmail = false;
     } else {
         let user = new usersModel({
             username: req.body.username,
@@ -50,7 +51,6 @@ let unlike = async (req, res) => {
         for (let i = 0; i < likesArray.length; i++) {
             if (likesArray[i]._id === imageID) {
                 likesArray.splice(i, 1);
-                console.log("new array:", data.likedArts);
             }
         }
         data.likedArts = likesArray;
