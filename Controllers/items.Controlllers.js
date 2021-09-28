@@ -40,8 +40,8 @@ const incrementLikes = async (req, res) => {
         data.likesCounter = data.likesCounter + 1;
         data.save();
     });
-    let updatedItem = await allMuseumsModel.findOne({ _id: id });
-    res.status(200).send(updatedItem.likesCounter);
+    let updatedLikes = await allMuseumsModel.findOne({ _id: id });
+    res.status(200).send({"newLikes": updatedLikes.likesCounter});
 }
 
 module.exports = {makeColliction, getAllarts, incrementLikes};

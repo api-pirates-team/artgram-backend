@@ -27,7 +27,7 @@ server.post("/create_account", createUser) // Login/signup
 server.get("/getuser", getUser); // Get user account data
 server.put('/update-likes/:id', updateLikes); // Like an image and add it to the user's feed
 server.delete('/unlike/:id', unlike) // Unlike an image and remove it from the user's feed
-server.put("/liked-item", incrementLikes)
+server.put("/liked-item/:id", incrementLikes)
 
 // Artists account requests:
 server.get("/get-work", getWorks);
