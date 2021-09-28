@@ -10,7 +10,7 @@ server.use(express.json());
 const PORT = process.env.PORT;
 
 const { createUser, getUser, updateLikes, unlike } = require('./Controllers/users.Controller');
-const { getAllarts } = require('./Controllers/items.Controlllers');
+const { getAllarts, incrementLikes } = require('./Controllers/items.Controlllers');
 const { getWorks, addWorks, deleteWork, updateWork, addComment } = require('./Controllers/artists.Controller');
 
 mongoose.connect(`${process.env.MONGO_ATLAS}`, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -27,6 +27,7 @@ server.post("/create_account", createUser) // Login/signup
 server.get("/getuser", getUser); // Get user account data
 server.put('/update-likes/:id', updateLikes); // Like an image and add it to the user's feed
 server.delete('/unlike/:id', unlike) // Unlike an image and remove it from the user's feed
+server.put("/liked-item", incrementLikes)
 
 // Artists account requests:
 server.get("/get-work", getWorks);
