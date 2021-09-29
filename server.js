@@ -34,6 +34,6 @@ server.get("/get-work", getWorks);
 server.post("/add-work", addWorks)
 server.delete("/delete-work/:id", deleteWork);
 server.put("/update-work/:id", updateWork);
-server.post("/add-comment/:id", addComment);
+server.put("/add-comment/:id", addComment);
 
 server.listen(PORT, () => console.log(`listening on ${PORT}`));
