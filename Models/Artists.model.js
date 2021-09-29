@@ -15,10 +15,7 @@ const artistsSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    comments: {
-        type: Array,
-        default: []
-    }
+    comments: []
 });
 
 const artistsModel = mongoose.model('artists', artistsSchema);
